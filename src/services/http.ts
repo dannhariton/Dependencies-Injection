@@ -1,17 +1,20 @@
-import { Logger } from './logger';
+import { Logger } from "./logger";
 
-import type { ApiConfig } from '../types';
-export class HTTP {
+import type { ApiConfig, HttpService, LoggerService } from "../types";
+
+export class HTTP implements HttpService {
   logger: Logger;
-  apiConfig: ApiConfig;
+  config: ApiConfig;
 
-  constructor(apiConfig: ApiConfig) {
-    this.apiConfig = apiConfig;
-    this.logger = new Logger();
+  static $inject = ["logger", "config"];
+
+  constructor(logger: LoggerService, config: ApiConfig) {
+    this.config = config;
+    this.logger = logger;
   }
 
   async get(url: string) {
-    const response = await fetch(`${this.apiConfig.path}${url}`);
+    const response = await fetch(`${this.config.path}${url}`);
 
     if (response.ok) {
       const responseData = await response.json();
