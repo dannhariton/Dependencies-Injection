@@ -7,12 +7,13 @@
     "rootDir": "src",
     "outDir": "./dist/client",
     "noImplicitAny": true,
-    "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
-    "baseUrl": ".",
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
